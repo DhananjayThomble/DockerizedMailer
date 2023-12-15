@@ -1,0 +1,15 @@
+version: '3'
+services:
+  dockerized-mailer:
+    build: .
+    ports:
+      - '3000:4010'
+    environment:
+      - NODE_ENV=development
+      - PORT=${PORT}
+      - MONGODB_URI=${MONGODB_URI}
+      - EMAIL_HOST=${EMAIL_HOST}
+      - EMAIL_PORT=${EMAIL_PORT}
+      - EMAIL_HOST_USER=${EMAIL_HOST_USER}
+      - EMAIL_HOST_PASSWORD=${EMAIL_HOST_PASSWORD}
+
