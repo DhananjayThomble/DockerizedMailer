@@ -10,6 +10,8 @@ COPY package*.json ./
 # install dependencies
 RUN npm install
 
+RUN npm install --only=development
+
 # copy the rest of the code files to the working directory
 COPY . .
 
@@ -17,4 +19,4 @@ COPY . .
 EXPOSE 4010
 
 # command to run the application
-CMD ["node", "server.js"]
+CMD ["npm", "start"]

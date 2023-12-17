@@ -1,5 +1,6 @@
 const Form = require("../models/FormModel.js");
 const sendEmail = require("../utils/mailSender.js");
+const path = require("path");
 
 const test = (req, res) => {
   res.send("Hello from test!");
@@ -9,6 +10,7 @@ const test = (req, res) => {
 const acceptForm = async (req, res) => {
   try {
     const { name, email, contactNumber } = req.body;
+    console.log("req.body: ", req.body);
 
     const form = new Form({ name, email, contactNumber });
     await form.save();
@@ -64,7 +66,14 @@ const emailContent = (name, email, contactNumber) => {
   `;
 };
 
+// return contact form
+const renderContactForm = (req, res) => {
+  const filePath = path.join(__dirname, "..", "views", "contact.html");
+  res.sendFile(filePath);
+};
+
 module.exports = {
   test,
   acceptForm,
+  renderContactForm,
 };
