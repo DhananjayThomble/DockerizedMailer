@@ -15,6 +15,9 @@ dbConnection();
 // routes
 app.use("/api/form", require("./routes/formRoutes"));
 
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/views/contact.html");
+});
 
 // start server
 app.listen(PORT, () => {

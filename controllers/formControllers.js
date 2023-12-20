@@ -19,7 +19,9 @@ const acceptForm = async (req, res) => {
     const subject = "Thank you for your submission!";
     const recipient = email;
     const html = emailContent(name, email, contactNumber);
-    await sendEmail(subject, recipient, html);
+    // await sendEmail(subject, recipient, html);
+
+    sendEmail(subject, recipient, html).catch((error) => console.error(error));
 
     res.status(200).json({ message: "Form submitted successfully!" });
   } catch (error) {
